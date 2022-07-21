@@ -1,5 +1,7 @@
 const express = require('express')
 const mysql = require('mysql2')
+const inquirer = require('inquirer')
+const questions = require('./logic/inquirer.js')
 
 const PORT = process.env.PORT || 3001
 const app = express()
@@ -130,7 +132,7 @@ app.post('/api/add-department', ({ body }, res) => {
             return;
         }
         res.json({
-            message: 'Success! Department added to database.'
+            message: 'Success! Department added to database.',
             data: body
         })
     })
@@ -144,3 +146,4 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}.`)
 })
 
+questions.homePage()
